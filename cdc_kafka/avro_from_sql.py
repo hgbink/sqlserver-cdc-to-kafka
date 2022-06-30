@@ -79,7 +79,8 @@ def avro_schema_from_sql_type(source_field_name: str, sql_type_name: str, decima
     elif sql_type_name in ('binary', 'image', 'varbinary'):
         avro_type = "bytes"
     else:
-        raise Exception(f"Field '{source_field_name}': I am unsure how to convert SQL type {sql_type_name} to Avro")
+        avro_type = sql_type_name
+        # raise Exception(f"Field '{source_field_name}': I am unsure how to convert SQL type {sql_type_name} to Avro")
 
     if make_nullable:
         return {
